@@ -1,0 +1,78 @@
+﻿@model List<Lab4_MVC_Mamani.Models.ClsCajero2>
+@{
+    ViewBag.Title = "Dispensar Billetes";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="font-weight-bold mb-0">Dispensar Billetes</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-weight-bold">Monto:</label>
+                                <p class="mb-0">@ViewBag.Monto</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-weight-bold">Cantidad:</label>
+                                <p class="mb-0">@ViewBag.Cantidad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Billete/Moneda</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2"><strong>Centavos</strong></td>
+                                </tr>
+                                @foreach (var item in Model.Where(x => x.tipo == "Centavos" && x.view == 1))
+                                {
+                                    <tr>
+                                        <td>@item.moneda - @item.tipo</td>
+                                        <td>@item.cantidad</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td colspan="2"><strong>Monedas</strong></td>
+                                </tr>
+                                @foreach (var item in Model.Where(x => x.tipo == "Monedas" && x.view == 1))
+                                {
+                                    <tr>
+                                        <td>@item.moneda - @item.tipo</td>
+                                        <td>@item.cantidad</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td colspan="2"><strong>Billetes</strong></td>
+                                </tr>
+                                @foreach (var item in Model.Where(x => x.tipo == "Billetes" && x.view == 1))
+                                {
+                                    <tr>
+                                        <td>@item.moneda - @item.tipo</td>
+                                        <td>@item.cantidad</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    @Html.ActionLink("Regresar al formulario", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

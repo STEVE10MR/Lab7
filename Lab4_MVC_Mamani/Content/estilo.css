@@ -1,0 +1,37 @@
+﻿<style >
+body {
+    background-color: #323232;
+    color: #f5f5f5;
+    font-family: "Roboto", sans-serif;
+}
+
+h2, h3 {
+    color: #ffd700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+img {
+    border: 3px solid #ffd700;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+input[type="submit"] {
+    background-color: #ffd700;
+    color: #323232;
+    font-size: 20px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
+}
+
+    input[type="submit"]:hover {
+        background-color: #f5f5f5;
+        color: #323232;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        cursor: pointer;
+    }
+
+</style >

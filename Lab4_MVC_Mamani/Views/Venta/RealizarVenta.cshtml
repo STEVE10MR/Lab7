@@ -1,0 +1,33 @@
+﻿
+@model Lab4_MVC_Mamani.Models.ClsVenta
+@{
+    ViewBag.Title = "RealizarVenta";
+}
+
+
+
+<h2>Realizar Venta</h2>
+<br />
+<div class="container">
+    @if (Model.random < 100)
+    {
+        Model.total = Model.monto - (Model.monto * 0.20);
+        Model.descuento = Model.monto * 0.20;
+    }
+    else if (Model.random >= 150)
+    {
+        Model.total = Model.monto - (Model.monto * 0.50);
+        Model.descuento = Model.monto * 0.50;
+    }
+</div>
+
+<br />
+<div class="accordion">
+    Numero Aleatorio: <label class="text-primary">@Model.random</label> <br />
+    Monto Total de compra: <label class="text-info">@Model.monto</label> <br />
+    Descuento: <label class="text-danger">@Model.descuento</label> <br />
+    Total de pagar: <label class="text-secondary">@Model.total</label> <br />
+</div>
+<br />
+@Html.ActionLink("<< Retornar al formulario anterior", "Index")
+

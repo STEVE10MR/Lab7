@@ -1,0 +1,18 @@
+﻿@model Lab4_MVC_Mamani.Models.ClsTabla
+@{
+    ViewBag.Title = "generarTabla";
+}
+
+<h2>GenerarTabla</h2>
+<br />
+@for (int i = 0; i <= 12; i++)
+{
+    var m = 0;
+    m = Convert.ToInt32(Model.Numero * i);
+    <div class="text-primary">
+        @Model.Numero X @i = @m
+    </div>
+    <a href="Index">Retornar</a>
+
+}
+

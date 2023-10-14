@@ -1,0 +1,48 @@
+﻿@model List<Lab4_MVC_Mamani.Models.ClsVenta3>
+@{
+    ViewBag.Title = "CalcularVenta";
+}
+
+<h2>Calcular de Productos - listas</h2>
+<br />
+@using (Html.BeginForm("CalcularVenta", "Venta3", FormMethod.Post))
+{
+    <div class="card-header">
+        <div class="card-text">Venta de Productos</div>
+        <div class="card-body">
+            <p>
+
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+
+                    <label class="text-success">
+                        @Html.HiddenFor(m => m[i].nombre)
+                        @Html.CheckBoxFor(m => m[i].select, new { @value = true })
+                        @Model[i].nombre
+                    </label>
+                    <br />
+                }
+                <br />
+                <br />
+                <div class="accordion">
+                    <label class="text-primary">
+                        Subtotal: S/. @ViewBag.Subtotal
+                    </label>
+                    <br />
+                    <label class="text-primary">
+                        IGV: S/. @ViewBag.IGV
+                    </label>
+                    <br />
+                    <label class="text-primary">
+                        Total: S/. @ViewBag.Total
+                    </label>
+                </div>
+            </p>
+
+        </div>
+    </div>
+    <br />
+    <br />
+    <input class="btn btn-primary" type="submit" value="Calcular" />
+}
+@Html.ActionLink("<< Retornar al formulario anterior", "Index")

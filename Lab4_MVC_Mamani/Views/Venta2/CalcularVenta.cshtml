@@ -1,0 +1,62 @@
+﻿@model Lab4_MVC_Mamani.Models.ClsVenta2
+@{
+    ViewBag.Title = "CalcularVenta";
+}
+
+<h2>Calcular de Productos</h2>
+<br />
+@using (Html.BeginForm("CalcularVenta", "Venta2", FormMethod.Post))
+{
+    <div class="card-header">
+        <div class="card-text">Venta de Productos</div>
+        <div class="card-body">
+            <p>
+                <label class="text-success">
+                    @Html.CheckBoxFor(model => model.productoLaptop, "")
+                    Laptop Acer Predator 300
+                </label>
+                <br />
+                <label class="text-success">
+                    @Html.CheckBoxFor(model => model.productoDiscoDuro, "")
+                    Disco Duro Externo 1TB Sony
+                </label>
+                <br />
+                <label class="text-success">
+                    @Html.CheckBoxFor(model => model.productoMonitor, "")
+                    Monitor HP 23
+                </label>
+                <br />
+                <label class="text-success">
+                    @Html.CheckBoxFor(model => model.productoCamaraWeb, "")
+                    CamaraWeb Logitech Full HDS
+                </label>
+                <br />
+                <label class="text-success">
+                    @Html.CheckBoxFor(model => model.productoImpresora, "")
+                    Impresora Multifuncional Epson L3150
+                </label>
+                <br />
+                <br />
+                <div class="accordion">
+                    <label class="text-primary">
+                        Subtotal: S/. @Model.subtotal
+                    </label>
+                    <br />
+                    <label class="text-primary">
+                        IGB: S/. @Model.igv
+                    </label>
+                    <br />
+                    <label class="text-primary">
+                        Total: S/. @Model.total
+                    </label>
+                </div>
+                <br /><br />
+                <button class="btn btn-dark">Calcular Venta</button>
+            </p>
+        </div>
+    </div>
+    <br />
+    <br />
+}
+@Html.ActionLink("<< Retornar al formulario anterior", "Index")
+

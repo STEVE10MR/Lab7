@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Dispensar Billetes";
+}
+<h2>Cajero</h2>
+<br />
+<br />
+
+@using (Html.BeginForm("DispensarBilletes", "Cajero2", FormMethod.Post))
+{
+    <div class="card-header">
+        @Html.Label("monto", "Ingrese Monto:")
+        <input type="number" name="monto" step="any" />
+        @Html.ValidationMessage("Debe ingresar un valor")
+    </div>
+    <br />
+    <br />
+    <input class="btn btn-primary" type="submit" value="Dispensar" />
+}

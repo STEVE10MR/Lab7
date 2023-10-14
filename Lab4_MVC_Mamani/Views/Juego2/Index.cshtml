@@ -1,0 +1,115 @@
+﻿@model Lab4_MVC_Mamani.Models.ClsJuego2
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container my-5">
+    <h1 class="text-center">Bienvenido al Casino en línea</h1>
+    <div class="row justify-content-center my-5">
+        <div class="col-md-8 text-center">
+            <h2 class="text-uppercase mb-4">Juego de Tragamonedas</h2>
+            <div class="card shadow-lg border-0">
+                <div class="card-body">
+                    @if (Session["monto"] == null)
+                    {
+                        Session["monto"] = @Model.resultado;
+                    }
+                    else
+                    {
+                        Session["monto"] = @Model.resultado;
+                    }
+                    @using (Html.BeginForm("Index", "Juego2", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+                    {
+                        <div class="form-group">
+                            <button class="btn btn-warning btn-lg" type="submit">Jugar</button>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-4">
+                                <img src='@Url.Content("~/Image/" + Model.codigo01+".png")' id="imagen1" class="img-fluid" />
+                            </div>
+                            <div class="col-md-4">
+                                <img src='@Url.Content("~/Image/" + Model.codigo02+".png")' id="imagen2" class="img-fluid" />
+                            </div>
+                            <div class="col-md-4">
+                                <img src='@Url.Content("~/Image/" + Model.codigo03+".png")' id="imagen3" class="img-fluid" />
+                            </div>
+                        </div>
+                    }
+                    <div class="my-5">
+                        @if (Convert.ToInt32(Session["monto"]) > 20000)
+                        {
+                            <h3 class="text-danger">¡Por favor ya no sigas!</h3>
+                            <h3 class="text-success">Tu saldo actual es: S/. @Model.resultado</h3>
+                        }
+                        else if (Convert.ToInt32(Session["monto"]) > 1000)
+                        {
+                            <h3 class="text-warning">¡Presiento que ganarás más!</h3>
+                            <h3 class="text-success">Tu saldo actual es: S/. @Model.resultado</h3>
+                        }
+                        else if (Convert.ToInt32(Session["monto"]) <= 1000)
+                        {
+                            <h3 class="text-danger">¡A veces se gana o se pierde, aprende a perder!</h3>
+                            <h3 class="text-success">Tu saldo actual es: S/. @Model.resultado</h3>
+                        }
+                        else
+                        {
+                            <h3 class="text-danger">¡Upps!</h3>
+                            <h3 class="text-success">Tu saldo actual es: S/. @Model.resultado</h3>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="my-5">
+                @Html.ActionLink("<< Retornar al formulario anterior", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let imagen1 = document.getElementById('imagen1');
+    let imagen2= document.getElementById('imagen2');
+    let imagen3 = document.getElementById('imagen3');
+
+    let intervalId1, intervalId2, intervalId3;
+
+    function girarImagen1() {
+        let randomNumber = Math.floor(Math.random() * 15) + 1;
+        imagen1.src = '@Url.Content("~/Image/")' + randomNumber + '.png';
+    }
+
+    function girarImagen2() {
+        let randomNumber = Math.floor(Math.random() * 15) + 1;
+        imagen2.src = '@Url.Content("~/Image/")' + randomNumber + '.png';
+    }
+
+    function girarImagen3() {
+        let randomNumber = Math.floor(Math.random() * 15) + 1;
+        imagen3.src = '@Url.Content("~/Image/")' + randomNumber + '.png';
+    }
+
+    function iniciarGiroImagenes(time) {
+        intervalId1 = setInterval(girarImagen1, time);
+        intervalId2 = setInterval(girarImagen2, time);
+        intervalId3 = setInterval(girarImagen3, time);
+    }
+
+    function detenerGiroImagenes() {
+        clearInterval(intervalId1);
+        clearInterval(intervalId2);
+        clearInterval(intervalId3);
+
+    }
+    $('form').submit(function (event) {
+        event.preventDefault();
+        iniciarGiroImagenes(150);
+        setTimeout(function () {
+            detenerGiroImagenes();
+            $('form').unbind('submit').submit();
+        }, 3500);
+
+    });
+</script>
+
+@Html.ActionLink("<< Retornar al formulario anterior", "Index")

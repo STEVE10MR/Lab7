@@ -1,0 +1,21 @@
+﻿@model Lab4_MVC_Mamani.Models.ClsCajero
+@{
+    ViewBag.Title = "DispensarBilletes";
+}
+
+<h2>Cajero</h2>
+<br />
+<br />
+
+@using (Html.BeginForm("DispensarBilletes", "Cajero", FormMethod.Post))
+{
+    <div class="card-header">
+        @Html.LabelFor(m => m.monto, "Ingrese Monto:")
+        @Html.EditorFor(m => m.monto)
+        @Html.ValidationMessage("Debe ingresar un valor")
+    </div>
+    <br />
+    <br />
+    <input class="btn btn-primary" type="submit" value="Dispensar" />
+}
+

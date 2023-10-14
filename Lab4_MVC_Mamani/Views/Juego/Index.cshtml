@@ -1,0 +1,41 @@
+﻿
+@model Lab4_MVC_Mamani.Models.ClsJuego
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<br />
+<br />
+<div class="text-center">
+    @using (Html.BeginForm("Index", "Juego", FormMethod.Post))
+    {
+        <div class="form-control">
+            @Html.LabelFor(model => model.numero1, "Juego")
+        </div>
+        <br />
+        <br />
+        <input class="btn btn-primary" type="submit" value="Jugar" />
+        <br />
+        <br />
+        if (Session["i"] == null)
+        {
+            Session["i"] = 1;
+            <h3>? - ? - ?</h3>
+        }
+        else
+        {
+            int contador = Convert.ToInt32(Session["i"]);
+            contador++;
+            Session["i"] = contador;
+            <h3 class="text-danger">@Model.numero1 - @Model.numero2 - @Model.numero3</h3>
+        }
+
+    }
+    <br />
+    <br />
+    <h3 class="text-success">@Model.resultado</h3>
+</div>
+
+
+@Html.ActionLink("<< Retornar al formulario anterior", "Index")

@@ -1,0 +1,21 @@
+﻿@model Lab4_MVC_Mamani.Models.ClsVenta
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Venta de productos</h2>
+<br />
+@using (Html.BeginForm("RealizarVenta", "Venta", FormMethod.Post))
+{
+    <div class="form-control">
+        @Html.LabelFor(model => model.monto, "Ingrese el monto de compra:")
+        @Html.EditorFor(model => model.monto, new { @class = "form-control" })
+    </div>
+    <br />
+    <br />
+    <input class="btn btn-primary" type="submit" value="Calcular" />
+
+
+}
+
+@Html.ActionLink("<< Retornar al formulario anterior", "Index")

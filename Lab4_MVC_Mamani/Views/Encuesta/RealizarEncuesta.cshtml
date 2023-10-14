@@ -1,0 +1,93 @@
+﻿@model Lab4_MVC_Mamani.Models.ClsEncuesta
+@{
+    ViewBag.Title = "RealizarEncuesta";
+}
+
+<h2>Realizar Encuesta</h2>
+<br />
+<div class="text-xl-center">
+    @using (Html.BeginForm("RealizarEncuesta", "Encuesta", FormMethod.Post)) 
+    { 
+        <p>Seleccionar el @Request["plato"]</p>
+        <br />
+        <table class="table" style="width:80%;margin:1em auto;">
+            <tr>
+                <td class="row-cols-xl-auto">Platos</td>
+                <td class="row-cols-xl-auto">Cantidad</td>
+                <td class="row-cols-xl-auto">Porcentaje</td>
+                <td class="row-cols-xl-auto">Grafico</td>
+            </tr>
+            <tr>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Html.RadioButton("Plato", "Plato 1")@ViewBag.alternativa1</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Session["cv1"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Session["porcentajeP1"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <progress class="progress bg-primary" id="pb1" value="@Session["porcentajeP1"]" max="100.00"></progress>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-cols-xl-auto">
+                    <p><label class="text-lg-start">@Html.RadioButton("Plato", "Plato 2")@ViewBag.alternativa2</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Session["cv2"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Session["porcentajeP2"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <progress class="progress bg-primary" id="pb2" value=@Session["porcentajeP2"] max="100.00"></progress>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Html.RadioButton("Plato", "Plato 3")@ViewData["alternativa3"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Session["cv3"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Session["porcentajeP3"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <progress class="progress bg-primary" id="pb3" value=@Session["porcentajeP3"] max="100.00"></progress>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-cols-xl-auto">
+                    <p><label>Total de Votos:</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Session["totalvotos"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    <p><label>@Session["totalprocentaje"]</label></p>
+                </td>
+                <td class="row-cols-xl-auto">
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="row-cols-xl-auto">
+                    &nbsp;
+                </td>
+                <td class="row-cols-xl-auto">
+                    <button class="btn btn-primary">Votar</button>
+                </td>
+                <td class="row-cols-xl-auto">
+                   <asp:Button id="btnReiniciar" class="btn btn-danger" runat="server" Text="Reiniciar" onclick="btnreiniciar"></asp:Button>
+                </td>
+                <td class="row-cols-xl-auto">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
